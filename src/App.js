@@ -31,10 +31,14 @@ function Buttuon({text="Hello there",isTrue="false"}){
 
 const ComponentFactory ={
 
-   create(type,text,isEditable){
+   create(type="div",text="some value",isEditable="false",clsname){
      return  React.createElement(
       `${type}`,
-      {contenteditable: `${isEditable}`},
+      {
+        contenteditable: `${isEditable}`,
+        class : `${clsname}`
+        },
+      
       `${text}`
     );
   }
@@ -51,10 +55,11 @@ export default function App() {
     <div className="App">
       <h1>Hello CodeSandbox</h1>
       {/* <UI cmp={ComponentFactory}/> */}
+      
       <Buttuon  isTrue="true"/>
      
-      {ComponentFactory.create("button","Bubby",true)}
-      {ComponentFactory.create("h1","blah")}
+      {ComponentFactory.create("button","Bubby",true,"Some")}
+      {ComponentFactory.create("h1","hey baby",true,"Some")}
       {ComponentFactory.create("select")}
      
     </div>
