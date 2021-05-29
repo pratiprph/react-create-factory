@@ -3,6 +3,26 @@
   text-align: center;
 }
 
-.some {
-  color:"red";
+#container {
+  position:relative
+}
+
+#editor {
+   width:40%;
+   height: 300px;
+   border: 1px solid green;
+   margin: 40px;
+   float:left;
+   padding: 10px;
+}
+
+#dropble {
+  width:40%;
+  height: 300px;
+  border: 1px solid red;
+  margin: 40px;
+  float:left;
+}
+.element_around {
+ margin: 10px;
 }

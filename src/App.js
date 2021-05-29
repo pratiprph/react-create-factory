@@ -1,10 +1,37 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import "./styles.css";
 
-function Buttuon({text="Hello there",isTrue="false"}){
-  //const {text} = props.text
+function Container(){
   return (
-    <button contenteditable={isTrue}>{text}</button>
+    <div id="container">
+      <div id="editor">
+      <Buttuon text="Rampurhat" isTrue="false" draggable="true"/>
+      
+      </div>
+      <div id="dropble">
+        droppable area
+      </div>
+    </div>
+  )
+}
+
+function Buttuon({text="Hi there",isTrue="false", draggable="false"}){
+  const [btnText, setBtnText] = useState(text) 
+  console.log(btnText)
+  const btnRef = useRef()
+  console.log(btnRef)
+  function changeText(e){
+    console.log(btnRef.current.innerText)
+    if(isTrue){
+
+      console.log(btnRef.current.innerText)
+      setBtnText(btnRef.current.innerText)
+    }
+  }
+  return (
+    <button contenteditable={isTrue} ref={btnRef} 
+    onKeyPress={changeText} draggable={false}
+    className="element_around">{btnText}</button>
   )
 }
 
@@ -31,7 +58,7 @@ function Buttuon({text="Hello there",isTrue="false"}){
 
 const ComponentFactory ={
 
-   create(type="div",text="some value",isEditable="false",clsname){
+   create(type="div",text="some value",isEditable="false"){
      return  React.createElement(
       `${type}`,
       {
@@ -52,16 +79,15 @@ const ComponentFactory ={
 
 export default function App() {
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      {/* <UI cmp={ComponentFactory}/> */}
-      
-      <Buttuon  isTrue="true"/>
+    <div>
+      <Container/>
      
-      {ComponentFactory.create("button","Bubby",true,"Some")}
+      
+     
+      {/* {ComponentFactory.create("button","Bubby",true,"Some")}
       {ComponentFactory.create("h1","hey baby",true,"Some")}
       {ComponentFactory.create("select")}
-     
+      */}
     </div>
   );
 }
